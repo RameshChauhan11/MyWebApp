@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Category>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@if(TempData["success"]!=null)
+{
+    
+    <script>
+        alert(@TempData["success"]);
+    </script>
+}
+<div class="container p-4">
+    <div class="row p-3">
+        <div class="col-sm-6">
+            <h2 class="text-primary">Categories</h2>
+        </div>
+
+        <div class="col-sm-6 text-end">
+            <a class="bi bi-plus-circle btn btn-primary" asp-action="Create" asp-controller="category">&nbsp;&nbsp;Create New Category</a>
+        </div>
+    </div>
+</div>
+
+<h1>List of categories</h1>
+<table class="table table-bordered table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>Category Name</th>
+            <th>Display Order</th>
+            <th>Create Date</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.DisplayOrder</td>
+                <td>@item.CreatedDateTime</td>
+                <td roll="group">
+                    <a href="/category/edit/@item.Id" class="text-warning" ><i class="bi bi-pencil-square"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="/category/delete/@item.Id" class="text-danger"><i class="bi bi-trash3"></i></a>
+                </td>
+            </tr>
+        }
+       
+    </tbody>
+</table>

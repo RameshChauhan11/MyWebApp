@@ -1,0 +1,23 @@
+﻿
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@if (TempData["success"] != null)
+{
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" ></script>
+
+    <script>
+        // Display a success toast, with a title
+        toastr.success('@TempData["success"]');
+
+    </script>
+
+   @*  <input type="hidden" id="success" value="@TempData["success"]" />
+    
+    <script>
+
+        alert(document.querySelector("#success").value);
+    </script> *@
+    
+}
